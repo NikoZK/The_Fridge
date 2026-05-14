@@ -1,6 +1,7 @@
 <script>
-const copyrightYearSpan = document.getElementById('copyright-year')
-copyrightYearSpan.textContent = '©' + new Date().getFullYear()
-
+  const year = new Date().getFullYear()
 </script>
 
+<footer>
+  <span>©{year}</span>
+</footer>

@@ -7,7 +7,10 @@
   import Profile from './components/Profile.svelte'
   import Fridge from './components/Fridge.svelte';
   import About from './components/About.svelte'
+  import Footer from './components/footer/Footer.svelte'
   import ReversePrivateRouteGuard from './components/ReversePrivateRouteGuard.svelte';
+  import toastr from 'toastr'
+  import 'toastr/build/toastr.min.css'
 
   let isLoggedIn = false
 
@@ -17,6 +20,29 @@
     })
     isLoggedIn = response.ok
   })
+
+
+  async function logout() {
+    const response = await fetch('http://localhost:8080/auth/logout', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      credentials: 'include',
+    })
+
+    const data = await response.json()
+    if (!response.ok) throw new Error(data.error)
+    return data
+  }
+
+  async function handleLogout() {
+    try {
+      const data = await logout()
+      toastr.success('You have signed out!')
+      location.reload()
+    } catch (error) {
+      toastr.error(error.message)
+    }
+  }
 </script>
 
 <Router> 
@@ -29,6 +55,7 @@
     {#if isLoggedIn}
       <Link to="/profile">Profile</Link> 
       <Link to="/fridge">Fridge</Link> 
+      <Link on:click={handleLogout} type="button" to="/login" >Logout</Link>
     {/if}
 
     <Link to="/about">About</Link>
@@ -45,3 +72,5 @@
 
 
 </Router>
+
+<Footer></Footer>

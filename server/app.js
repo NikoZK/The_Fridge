@@ -36,7 +36,7 @@ app.use(generalLimiter)
 
 const authenticationLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    limit: 7,
+    limit: 10,
     standardHeaders: 'draft-8',
     legacyHeaders: false,
     ipv6Subnet: 56,

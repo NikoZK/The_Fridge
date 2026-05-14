@@ -162,7 +162,6 @@ input {
 }
 
 #app {
-  width: 1126px;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -192,6 +191,8 @@ nav {
   justify-content: center;
   gap: 0.75rem;
   padding: 1rem;
+  border: 1px solid var(--border);
+  border-color: rgb(87, 87, 87);
 }
 
 /*Jeg kan ikke tage credit for de her styles*/
