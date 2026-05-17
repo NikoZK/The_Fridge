@@ -76,7 +76,7 @@
 
 		<p>
 			<br />
-			<button type="submit" class="counter">Sign Up</button>
+			<button type="submit" class="btn">Sign Up</button>
 		</p>
 	</form>
 </main>

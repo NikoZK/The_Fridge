@@ -49,14 +49,14 @@
     }
 </script>
 
-<main id="center">
+<main id="center"> 
     <h1>Fridge dashboard</h1>
 
     <section>
         <h2>Add item</h2>
-        <input bind:value={name} placeholder="Name" />
-        <input type="number" bind:value={quantity} min="1" />
-        <input type="date" bind:value={lastRestocked} />
+        <input class="bg_box" bind:value={name} placeholder="Name" />
+        <input class="bg_box" type="number" bind:value={quantity} min="1" />
+        <input class="bg_box" type="date" bind:value={lastRestocked} />
         <label><input type="checkbox" bind:checked={inNeed} /> In need</label>
         <button onclick={addItem}>Add</button>
     </section>
@@ -65,8 +65,8 @@
         {#each items as item (item.id)}
             <li>
                 <strong>{item.name}</strong> - quantity: {item.quantity} - last restocked: {item.last_restocked}{#if item.in_need} <em>(Need)</em>{/if}
-                <button onclick={() => updateItem(item.id, { quantity: item.quantity + 1, lastRestocked: item.lastRestocked || new Date().toISOString().split('T')[0], inNeed: item.inNeed })}>+</button>
-                <button onclick={() => deleteItem(item.id)}>Delete</button>
+                <button class="btn" onclick={() => updateItem(item.id, { quantity: item.quantity + 1, lastRestocked: item.lastRestocked || new Date().toISOString().split('T')[0], inNeed: item.inNeed })}>+</button>
+                <button class="btn-delete" onclick={() => deleteItem(item.id)}>Delete</button>
             </li>
         {/each}
     </ul>
