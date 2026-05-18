@@ -1,17 +1,18 @@
 <script>
-  import { Router, Link, Route } from "svelte-routing";
-  import { onMount } from "svelte";
-  import PrivateRouteGuard from "./components/Route_guards/PrivateRouteGuard.svelte";
-  import Login from "./components/Login.svelte";
-  import Signup from "./components/Signup.svelte";
-  import Profile from "./components/Profile.svelte";
-  import Fridge from "./components/Fridge.svelte";
-  import About from "./components/About.svelte";
-  import NotFound from "./components/NotFound.svelte";
-  import Footer from "./components/footer/Footer.svelte";
-  import ReversePrivateRouteGuard from "./components/Route_guards/ReversePrivateRouteGuard.svelte";
-  import toastr from "toastr";
-  import "toastr/build/toastr.min.css";
+  import { Router, Link, Route } from "svelte-routing"
+  import { onMount } from "svelte"
+  import PrivateRouteGuard from "./components/Route_guards/PrivateRouteGuard.svelte"
+  import Login from "./components/Login.svelte"
+  import Signup from "./components/Signup.svelte"
+  import Home from "./components/Home.svelte"
+  import Fridge from "./components/Fridge.svelte"
+  import About from "./components/About.svelte"
+  import Dinner from "./components/Dinner.svelte"
+  import NotFound from "./components/NotFound.svelte"
+  import Footer from "./components/footer/Footer.svelte"
+  import ReversePrivateRouteGuard from "./components/Route_guards/ReversePrivateRouteGuard.svelte"
+  import toastr from "toastr"
+  import "toastr/build/toastr.min.css"
 
   let isLoggedIn = false;
 
@@ -49,12 +50,13 @@
   <Router>
     <nav class="navbar">
       <div class="nav-left">
-        <img src="/fridge.png" alt="logo" class="nav-logo" />
+        <Link to="/home" class="logo"><img src="/fridge.png" alt="logo" class="nav-logo"/></Link>
         <span class="nav-title">The Fridge</span>
 
         {#if isLoggedIn}
-          <Link to="/profile">Profile</Link>
+          <Link to="/home">Home</Link>
           <Link to="/fridge">Fridge</Link>
+          <Link to="/dinner">Dinner</Link>
         {/if}
 
         <Link to="/about">About</Link>
@@ -62,17 +64,21 @@
 
       <div class="nav-right">
         {#if !isLoggedIn}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign up</Link>
+          <Link class="loggedOut" to="/login">Login</Link>
+          <Link class="loggedOut" to="/signup">Sign up</Link>
         {/if}
 
         {#if isLoggedIn}
-          <Link on:click={handleLogout} to="/login">Logout</Link>
+          <Link class="loggedIn" on:click={handleLogout} to="/login">Logout</Link>
         {/if}
       </div>
     </nav>
 
     <main class="page-content">
+
+    <Route path="/" exact>
+      <Login/>
+    </Route>
 
     <Route path="/*" exact>
       <NotFound/>
@@ -86,15 +92,19 @@
       <ReversePrivateRouteGuard><Signup /></ReversePrivateRouteGuard>
     </Route>
 
-    <Route path="/profile">
-      <PrivateRouteGuard><Profile /></PrivateRouteGuard>
+    <Route path="/home">
+      <PrivateRouteGuard><Home/></PrivateRouteGuard>
+    </Route>
+
+    <Route path="/dinner">
+      <PrivateRouteGuard><Dinner/></PrivateRouteGuard>
     </Route>
 
     <Route path="/fridge">
-      <PrivateRouteGuard><Fridge /></PrivateRouteGuard>
+      <PrivateRouteGuard><Fridge/></PrivateRouteGuard>
     </Route>
 
-    <Route path="/about"><About /></Route>
+    <Route path="/about"><About/></Route>
 
     </main>
   </Router>

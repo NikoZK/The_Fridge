@@ -22,7 +22,7 @@
     try {
       const data = await login(username, password)
       toastr.success(`Welcome, ${data.user.username}!`)
-      location.reload()
+      location.replace("/home")
     } catch (error) {
       toastr.error(error.message, "Login Failed")
     }

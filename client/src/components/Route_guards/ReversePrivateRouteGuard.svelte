@@ -10,7 +10,7 @@
       credentials: 'include'
     })
     if (response.ok) {
-      navigate('/profile', { replace: true })
+      navigate('/home', { replace: true })
     } else {
       isAllowed = true
     }
