@@ -2,22 +2,15 @@
 	import toastr from "toastr"
 	import "toastr/build/toastr.min.css"
 	import { navigate } from "svelte-routing"
+    import { fetchPost } from "../util/fetchUtil";
 
 	let email = ""
 	let username = ""
 	let password = ""
 
 	async function signup(email, username, password) {
-		const response = await fetch("http://localhost:8080/auth/signup", {
-			method: "POST",
-			headers: { "content-type": "application/json" },
-			credentials: "include",
-			body: JSON.stringify({ email, username, password }),
-		})
-
-		const data = await response.json()
-		if (!response.ok) throw new Error(data.error)
-		return data
+		const response = await fetchPost("/auth/signup", { email, username, password })
+		return response
 	}
 
 	async function handleSignup() {

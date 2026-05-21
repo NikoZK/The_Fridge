@@ -13,19 +13,19 @@ const transporter = nodemailer.createTransport({
 
 export async function sendWelcomeEmail (email, username) {
   const info = await transporter.sendMail({
-    from: 'football_summarizer@noreply.com',
+    from: 'noreply@the-fridge.com',
     to: `${email}`,
-    subject: 'Welcome to the site!',
+    subject: 'Welcome to The Fridge!',
     text:
         `
         Welcome ${username}!
-        Happy to have you on board baby! (All data is stored and might be sold to Xi Jinping)
+        Hello and welcome to THE FRIDGE
         `,
     html:
         `
         <h1>Welcome ${username}!</h1>
 
-        <h2>Happy to have you on board baby! (All data is stored and might be sold to Xi Jinping)</h2>
+        <h2>Hello and welcome to THE FRIDGE</h2>
         
         `
   })

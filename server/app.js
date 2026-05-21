@@ -5,6 +5,7 @@ import helmet from 'helmet'
 import { rateLimit } from 'express-rate-limit'
 import session from 'express-session'
 import cors from 'cors'
+import path from 'path'
 import 'dotenv/config'
 import http from 'http'
 import { Server } from 'socket.io'
@@ -17,6 +18,7 @@ app.use(cors({
 
 app.use(express.json())
 app.use(helmet())
+app.use(express.static('../client/dist'))
 
 const sessionMiddleware = session({
     secret: process.env.SESSION_SECRET,
@@ -59,13 +61,8 @@ app.use('/auth', authRouter)
 app.use('/fridge', fridgeRouter)
 
 // /{*splat} is the new syntax in Express 5.x, before it was just /*
-app.all('/{*splat}', (req, res) => {
-    res.send(`
-            <div>
-            <h1> ERROR 404 </h1>
-            <h3> The path: "${req.path}" doesnt exist </h3>
-            </div>
-            `)
+app.get('/*splat', (req, res) => {
+  res.sendFile(path.resolve('../client/dist/index.html'));
 })
 
 

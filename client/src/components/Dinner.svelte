@@ -27,6 +27,6 @@
 
 <div>
     {#each $dinnerStore as post}
-    <p>{post.message} — {post.username}</p>
+    <p>{post.message} -- {post.username}</p>
     {/each}
 </div>

@@ -1,28 +1,21 @@
 <script>
   import toastr from "toastr"
   import "toastr/build/toastr.min.css"
+    import { fetchPost } from "../util/fetchUtil";
 
   let username = ""
   let password = ""
 
   async function login(username, password) {
-    const response = await fetch("http://localhost:8080/auth/login", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ username, password }),
-    })
-
-    const data = await response.json()
-    if (!response.ok) throw new Error(data.error)
-    return data
+    const response = await fetchPost("/auth/login", { username, password })
+    return response
   }
 
   async function handleLogin() {
     try {
       const data = await login(username, password)
       toastr.success(`Welcome, ${data.user.username}!`)
-      location.replace("/home")
+      location.reload()
     } catch (error) {
       toastr.error(error.message, "Login Failed")
     }

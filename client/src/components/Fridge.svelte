@@ -1,52 +1,39 @@
 <script>
-    import { onMount } from "svelte";
+    import { onMount } from "svelte"
+    import { fetchGet, fetchPost, fetchPatch, fetchDelete } from '../util/fetchUtil.js'
 
-    let items = [];
-    let name = "";
-    let quantity = 1;
-    let lastRestocked = "";
-    let inNeed = false;
+    let items = []
+    let name = ""
+    let quantity = 1
+    let lastRestocked = ""
+    let inNeed = false
 
     async function getItems() {
-        const res = await fetch(`http://localhost:8080/fridge/items`, {
-            credentials: "include",
-        });
-        items = (await res.json()).data || [];
+        const res = await fetchGet(`/fridge/items`)
+        items = (res && res.data) ? res.data : []
     }
-    onMount(getItems);
+    onMount(getItems)
 
     async function addItem() {
-        const res = await fetch(`http://localhost:8080/fridge/items`, {
-            method: "POST",
-            credentials: "include",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
+        const res = await fetchPost(`/fridge/items`, {
                 name,
                 quantity,
                 lastRestocked,
-                inNeed: inNeed ? 1 : 0,
-            }),
-        });
-        if (res.ok) await getItems();
+                inNeed: inNeed ? 1 : 0
+            })
+        if (res) await getItems()
     }
 
     async function updateItem(id, updates) {
-        const res = await fetch(`http://localhost:8080/fridge/items/${id}`, {
-            method: "PATCH",
-            credentials: "include",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(updates),
-        });
-        if (res.ok) await getItems();
+        const res = await fetchPatch(`/fridge/items/${id}`, updates)
+        if (res) await getItems()
     }
 
     async function deleteItem(id) {
-        const res = await fetch(`http://localhost:8080/fridge/items/${id}`, {
-            method: "DELETE",
-            credentials: "include",
-        });
-        if (res.ok) await getItems();
+        const res = await fetchDelete(`/fridge/items/${id}`)
+        if (res) await getItems()
     }
+
 </script>
 
 <main id="center"> 

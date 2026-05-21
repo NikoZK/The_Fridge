@@ -1,4 +1,5 @@
 <script>
+  import { fetchGet } from "../util/fetchUtil.js";
   import toastr from "toastr"
   import "toastr/build/toastr.min.css"
   import { onMount } from "svelte"
@@ -10,12 +11,10 @@
     let inNeed = false
 
   async function getItems() {
-    const res = await fetch(`http://localhost:8080/fridge/items`, {
-      credentials: "include",
-    });
-    items = (await res.json()).data || [];
+    const res = await fetchGet(`/fridge/items`)
+    items = (res && res.data) ? res.data : []
   }
-  onMount(getItems);
+  onMount(getItems)
 
 
 </script>
