@@ -41,7 +41,7 @@ app.use(generalLimiter)
 
 const authenticationLimiter = rateLimit({
     windowMs: 15 * 60 * 1000,
-    limit: 50,
+    limit: 150,
     standardHeaders: 'draft-8',
     legacyHeaders: false,
     ipv6Subnet: 56,
@@ -75,13 +75,23 @@ const io = new Server(server, {
     }
 })
 
+const dinnerPosts = []
+
 io.engine.use(sessionMiddleware)
 
 io.on("connection", (socket) => {
     console.log("A new socket connected with id", socket.id)
+    socket.emit('post:all', dinnerPosts)
+
     socket.on("post:create", (data) => {
         data.username = socket.request.session.username
-        io.emit("post:new", data)
+        
+        dinnerPosts.push(data)
+        if (dinnerPosts.length > 10) {
+            dinnerPosts.shift()
+        }
+
+        io.emit("post:all", dinnerPosts)
     })
 
     socket.on("disconnect", () => {

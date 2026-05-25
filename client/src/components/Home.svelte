@@ -3,6 +3,7 @@
   import toastr from "toastr"
   import "toastr/build/toastr.min.css"
   import { onMount } from "svelte"
+  import { userStore } from "./stores/userStore.js";
 
     let items = []
     let name = ""
@@ -20,7 +21,7 @@
 </script>
 
 <main id="center">
-  <h1>Welcome</h1>
+  <h1>Welcome {$userStore.username}</h1>
 
   <ul>
         {#each items as item (item.id)}

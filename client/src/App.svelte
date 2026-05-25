@@ -9,10 +9,12 @@
   import About from "./components/About.svelte"
   import Dinner from "./components/Dinner.svelte"
   import NotFound from "./components/NotFound.svelte"
+  import PrivacyPolicy from "./components/PrivacyPolicy.svelte"
   import Footer from "./components/footer/Footer.svelte"
   import ReversePrivateRouteGuard from "./components/Route_guards/ReversePrivateRouteGuard.svelte"
   import toastr from "toastr"
   import "toastr/build/toastr.min.css"
+  import { userStore } from "./components/stores/userStore"
 
   let isLoggedIn = false;
 
@@ -21,7 +23,15 @@
       credentials: "include",
     });
     isLoggedIn = response.ok;
+
+        const data = await response.json()
+        if (response.ok) {
+          userStore.set({
+        email: data.user.email,
+        username: data.user.username})
+      }
   });
+  
 
   async function logout() {
     const response = await fetch("http://localhost:8080/auth/logout", {
@@ -60,6 +70,7 @@
         {/if}
 
         <Link to="/about">About</Link>
+        <Link to="/privacyPolicy">Privacy Policy</Link>
       </div>
 
       <div class="nav-right">
@@ -69,6 +80,7 @@
         {/if}
 
         {#if isLoggedIn}
+        <p>Logged in as: {$userStore.email}</p>
           <Link class="loggedIn" on:click={handleLogout} to="/login">Logout</Link>
         {/if}
       </div>
@@ -105,6 +117,7 @@
     </Route>
 
     <Route path="/about"><About/></Route>
+    <Route path="/privacyPolicy"><PrivacyPolicy/></Route>
 
     </main>
   </Router>

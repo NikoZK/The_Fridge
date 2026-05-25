@@ -2,12 +2,21 @@
     import { onDestroy, onMount } from "svelte"
     import io from "socket.io-client"
     import { dinnerStore } from "./stores/dinnerStore.js"
+    import { userStore } from "./stores/userStore.js"
 
-    let postText = ""
-    let socket;
+    let postText = ''
+    let socket
+    let currentUsername = ''
+
+    currentUsername = $userStore.username
 
     onMount(() => {
         socket = io("http://localhost:8080", { withCredentials: true })
+        
+        socket.on('post:all', (posts) => {
+            dinnerStore.set(posts)
+        })
+        
         socket.on("post:new", (post) => {
             dinnerStore.update((list) => [...list, post])
         })
@@ -17,16 +26,21 @@
 
     function sendPost() {
         socket.emit("post:create", { message: postText })
+        postText = ''
     }
 </script>
 
-<div>
-    <input bind:value={postText} placeholder="What do you want to eat?" />
-    <button on:click={sendPost}>Post</button>
+<div class="chat-page">
+
+<div class="chat-room">
+    {#each $dinnerStore as post}
+    <p class={post.username === currentUsername ? 'my-post' : 'other-post'}>{post.message} <br> -{post.username}</p>
+    {/each}
 </div>
 
-<div>
-    {#each $dinnerStore as post}
-    <p>{post.message} -- {post.username}</p>
-    {/each}
+<div class="chat-input">
+    <input size="50" style="height: 50px;" bind:value={postText} placeholder="What do you want to eat?" />
+    <button class="btn" on:click={sendPost}>Post</button>
+</div>
+
 </div>

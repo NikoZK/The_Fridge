@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
   --text: #6b6375;
@@ -10,8 +10,7 @@
   --accent-bg: rgba(29, 24, 109, 0.466);
   --accent-border: rgba(27, 18, 109, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -43,8 +42,7 @@
     --accent-bg: rgba(10, 9, 88, 0.15);
     --accent-border: rgba(25, 13, 128, 0.5);
     --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+    --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
   }
 }
 
@@ -58,13 +56,7 @@ body {
   min-height: 100vh;
   flex: 1;
   background:
-    linear-gradient(
-      rgba(5, 18, 92, 0.856),
-      rgba(5, 24, 65, 0.733),
-      rgba(7, 25, 65, 0.76)
-      
-    ),
-    url("/fridge_open.png");
+    linear-gradient(rgba(5, 18, 92, 0.856), rgba(5, 24, 65, 0.733), rgba(7, 25, 65, 0.76)), url('/fridge_open.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -75,13 +67,7 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    linear-gradient(
-      rgba(5, 18, 92, 0.856),
-      rgba(5, 24, 65, 0.733),
-      rgba(7, 25, 65, 0.76)
-      
-    ),
-    url("/fridge.png");
+    linear-gradient(rgba(5, 18, 92, 0.856), rgba(5, 24, 65, 0.733), rgba(7, 25, 65, 0.76)), url('/fridge.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -134,7 +120,6 @@ input {
   background: rgba(7, 25, 65, 0.76);
   border: 2px solid transparent;
   transition: border-color 0.3s;
-  margin-bottom: 24px;
 
   &:hover {
     border-color: var(--accent-border);
@@ -169,11 +154,8 @@ input {
   place-content: center;
   place-items: center;
   flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  padding-left: 35%;
+  padding-right: 35%;
 }
 
 #outer-body {
@@ -193,7 +175,7 @@ input {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem; 
+  padding: 1rem;
   background-color: #061044;
 }
 
@@ -229,18 +211,71 @@ input {
   color: #fff;
 }
 
+.second-option {
+  text-decoration: underline;
+  color: #0000ff;
+}
+
+.list-right {
+  display: flex;
+  align-items: center;
+}
+
+.chat-room {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 1;
+  padding: 1rem;
+}
+
+.chat-input {
+  margin-top: auto;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.chat-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 30vh;
+}
+
+.my-post {
+  align-self: flex-end;
+  background: #dbeafe;
+  color: #111827;
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  max-width: 60%;
+}
+
+.other-post {
+  align-self: flex-start;
+  background: #e5e7eb;
+  color: #111827;
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  max-width: 60%;
+}
+
 .loggedOut {
-  @apply bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded
+  @apply bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded;
 }
 
 .loggedIn {
-  @apply bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded
+  @apply bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded;
 }
 
 .btn {
-  @apply bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded
+  @apply bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded;
+}
+
+.btn-unavailable {
+  @apply bg-gray-500 text-black font-bold hover:bg-gray-500 py-2 px-4 border-b-4 border-gray-500 hover:border-gray-500 rounded;
 }
 
 .btn-delete {
-  @apply bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded
+  @apply bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded;
 }
