@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte'
   import { fetchGet, fetchPost, fetchPatch, fetchDelete } from '../util/fetchUtil.js'
+  import toastr from 'toastr'
 
   let items = []
   let name = ''
@@ -21,13 +22,19 @@
       lastRestocked,
       inNeed: inNeed ? 1 : 0
     })
-    if (res) await getItems()
-    
-    name = ''
-    quantity = ''
-    lastRestocked = ''
-    inNeed = false
+
+    if (res) {
+      await getItems()
+      toastr.success(`Added ${res.data.name}`)
+      
+      name = ''
+      quantity = ''
+      lastRestocked = ''
+      inNeed = false
+    }  else {
+      toastr.error('Failed to add the item')
     }
+  }
 
   async function updateItem(id, updates) {
     const res = await fetchPatch(`/fridge/items/${id}`, updates)
@@ -36,7 +43,10 @@
 
   async function deleteItem(id) {
     const res = await fetchDelete(`/fridge/items/${id}`)
-    if (res) await getItems()
+    if (res) { 
+      await getItems()
+      toastr.success('Item successfully deleted')
+    }
   }
 </script>
 
@@ -44,12 +54,11 @@
   <h1>Fridge dashboard</h1>
 
   <section>
-    <h2>Add item</h2>
     <input class="bg_box" bind:value={name} placeholder="Name" />
-    <input class="bg_box" type="number" bind:value={quantity} placeholder="Amount" min="1" />
+    <input class="bg_box" type="number" bind:value={quantity} placeholder="Amount" min="0" />
     <input class="bg_box" type="date" bind:value={lastRestocked} />
     <label><input type="checkbox" bind:checked={inNeed} /> In need</label>
-    <button class="btn" onclick={addItem}>Add</button>
+    <button class="btn" class:btn-unavailable={name === "" || quantity === '' || lastRestocked === ''} disabled={name === "" || quantity === '' || lastRestocked === ''} onclick={addItem}>Add</button>
   </section>
 
   <table class="w-full font-2xl">
@@ -73,11 +82,11 @@
                 onclick={() =>
                   updateItem(item.id, {
                     quantity: item.quantity + 1,
-                    lastRestocked: item.last_restocked || new Date().toISOString().split('T')[0],
+                    lastRestocked: item.lastRestocked || new Date().toISOString().split('T')[0],
                     inNeed: 0
                   })}>+</button
               >
-              <button disabled={item.quantity === 0} class="btn" class:btn-unavailable={item.quantity === 0} onclick={() => updateItem(item.id, { quantity: item.quantity - 1 })}>-</button>
+              <button class="btn" disabled={item.quantity === 0} class:btn-unavailable={item.quantity === 0} onclick={() => updateItem(item.id, { quantity: item.quantity - 1 })}>-</button>
               <input
                 type="checkbox"
                 checked={item.in_need}

@@ -14,6 +14,7 @@
   import ReversePrivateRouteGuard from "./components/Route_guards/ReversePrivateRouteGuard.svelte"
   import toastr from "toastr"
   import "toastr/build/toastr.min.css"
+
   import { userStore } from "./components/stores/userStore"
 
   let isLoggedIn = false;

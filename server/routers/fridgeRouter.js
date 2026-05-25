@@ -12,8 +12,8 @@ router.get('/items', async (req, res) => {
 router.post('/items', authChecker, async (req, res) => {
   const { name, quantity, lastRestocked, inNeed } = req.body
 
-  if (name === '' || quantity < 0 || lastRestocked === '' || inNeed > 1) {
-    return res.status(400).send({ error: 'Rows cannot be empty'})
+  if (name.trim() === "" || quantity < 0 || lastRestocked === '' || inNeed !== 0 && inNeed !== 1) {
+    return res.status(400).send({ error: 'Rows are invalid'})
   }
 
   const result = await db.run(

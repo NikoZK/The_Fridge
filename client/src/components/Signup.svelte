@@ -16,7 +16,7 @@
   async function handleSignup() {
     try {
       const data = await signup(email, username, password)
-      toastr.success(`Account created for ${data.user.username}!`)
+      toastr.success(`Account created for ${data.user.username}!,`)
       location.reload()
     } catch (error) {
       toastr.error(error.message)

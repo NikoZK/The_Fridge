@@ -31,7 +31,7 @@ app.use(sessionMiddleware)
 
 const generalLimiter = rateLimit({
     windowMs: 5 * 60 * 1000, // Time
-    limit: 99, // Requests
+    limit: 199, // Requests
     standardHeaders: 'draft-8', // Newest format
     legacyHeaders: false, // Disables old X-RateLimit
     ipv6Subnet: 56, // IPv6 subnet grouping
@@ -60,7 +60,7 @@ app.use('/auth/signup', authenticationLimiter)
 app.use('/auth', authRouter)
 app.use('/fridge', fridgeRouter)
 
-// /{*splat} is the new syntax in Express 5.x, before it was just /*
+
 app.get('/*splat', (req, res) => {
   res.sendFile(path.resolve('../client/dist/index.html'));
 })

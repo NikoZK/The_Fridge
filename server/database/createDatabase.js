@@ -35,21 +35,41 @@ const hashedPassword2 = await bcrypt.hash('password123', 10)
 await db.run(`INSERT INTO users (email, username, password) VALUES (?, ?, ?)`, [
   'david1@example.com',
   'david',
-  hashedPassword1
+  hashedPassword2
 ])
 
 const hashedPassword3 = await bcrypt.hash('admin', 10)
 await db.run(`INSERT INTO users (email, username, password) VALUES (?, ?, ?)`, [
   'admin@admin.com',
   'admin',
-  hashedPassword2
+  hashedPassword3
 ])
 
 const fridge_seed1 = await db.run(
   `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
-  ['yoghurt', 2, '2026-05-09', 1]
+  ['Milk', 2, '2026-05-27', 0]
 )
 const fridge_seed2 = await db.run(
   `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
-  ['eggs', 12, '2026-05-06', 0]
+  ['Eggs', 12, '2026-05-27', 0]
+)
+
+const fridge_seed3 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Butter', 0, '2026-05-24', 1]
+)
+
+const fridge_seed4 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Koldskål', 1, '2026-05-26', 1]
+)
+
+const fridge_seed5 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Faxe Kondi Free', 3, '2026-05-06', 0]
+)
+
+const fridge_seed6 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Chicken breast', 2, '2026-05-26', 1]
 )

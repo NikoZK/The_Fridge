@@ -1,16 +1,16 @@
 @import 'tailwindcss';
 
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #1c1397;
-  --accent-bg: rgba(29, 24, 109, 0.466);
-  --accent-border: rgba(27, 18, 109, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --text: #ffffff;
+  --text-h: #f3f4f6;
+  --bg: #091453;
+  --border: #08134b;
+  --code-bg: #1f2028;
+  --accent: #ffffff;
+  --accent-bg: rgba(10, 9, 88, 0.15);
+  --accent-border: rgba(25, 13, 128, 0.5);
+  --social-bg: rgba(47, 48, 58, 0.5);
+  --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -31,21 +31,6 @@
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #ffffff;
-    --text-h: #f3f4f6;
-    --bg: #091453;
-    --border: #08134b;
-    --code-bg: #1f2028;
-    --accent: #ffffff;
-    --accent-bg: rgba(10, 9, 88, 0.15);
-    --accent-border: rgba(25, 13, 128, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow: rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-}
-
 body {
   margin: 0;
   min-height: 100vh;
@@ -55,33 +40,25 @@ body {
   margin: 0;
   min-height: 100vh;
   flex: 1;
-  background:
-    linear-gradient(rgba(5, 18, 92, 0.856), rgba(5, 24, 65, 0.733), rgba(7, 25, 65, 0.76)), url('/fridge_open.png');
+  background: linear-gradient(rgba(5, 18, 92, 0.856), rgba(5, 24, 65, 0.733), rgba(7, 25, 65, 0.76)), url('/fridge_open.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 .logged-out-bg {
   margin: 0;
   min-height: 100vh;
-  background:
-    linear-gradient(rgba(5, 18, 92, 0.856), rgba(5, 24, 65, 0.733), rgba(7, 25, 65, 0.76)), url('/fridge.png');
+  background: linear-gradient(rgba(5, 18, 92, 0.856), rgba(5, 24, 65, 0.733), rgba(7, 25, 65, 0.76)), url('/fridge.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 h1 {
   font-size: 56px;
   letter-spacing: -1.68px;
   margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
 }
 
 h2 {
@@ -95,7 +72,7 @@ h2 {
 }
 
 h5 {
-  font-size: 20x;
+  font-size: 20px;
   line-height: 118%;
   letter-spacing: -0.24px;
   margin: 0 0 0 8px;
@@ -119,15 +96,7 @@ input {
   color: var(--accent);
   background: rgba(7, 25, 65, 0.76);
   border: 2px solid transparent;
-  transition: border-color 0.3s;
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
 }
 
 .bg_box {
@@ -227,6 +196,13 @@ input {
   gap: 1rem;
   flex: 1;
   padding: 1rem;
+  height: 65vh;
+  width: 60vh;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  background-color: rgba(214, 237, 255, 0.76);
 }
 
 .chat-input {
@@ -234,12 +210,16 @@ input {
   padding: 1rem;
   display: flex;
   gap: 1rem;
+  flex-shrink: 0;
+  justify-content: center;
 }
 
 .chat-page {
   display: flex;
   flex-direction: column;
-  min-height: 30vh;
+  height: 65vh;
+  overflow: hidden;
+  min-height: 0;
 }
 
 .my-post {
@@ -249,6 +229,8 @@ input {
   padding: 0.5rem 0.75rem;
   border-radius: 12px;
   max-width: 60%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .other-post {
@@ -258,6 +240,8 @@ input {
   padding: 0.5rem 0.75rem;
   border-radius: 12px;
   max-width: 60%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .loggedOut {
