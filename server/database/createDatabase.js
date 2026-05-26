@@ -73,3 +73,69 @@ const fridge_seed6 = await db.run(
   `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
   ['Chicken breast', 2, '2026-05-26', 1]
 )
+
+const fridge_seed7 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Yoghurt', 2, '2026-05-26', 0]
+)
+
+const fridge_seed8 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Ketchup', 1, '2026-05-26', 0]
+)
+
+const fridge_seed9 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Ribena', 0, '2026-05-26', 1]
+)
+
+const fridge_seed10 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Tomatoes', 4, '2026-05-26', 0]
+)
+
+const fridge_seed11 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Beer', 12, '2026-05-26', 1]
+)
+
+const fridge_seed12 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Blueberries', 1, '2026-05-26', 0]
+)
+
+const fridge_seed13 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Bananas', 4, '2026-05-26', 0]
+)
+
+const fridge_seed14 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Grapes', 1, '2026-05-26', 0]
+)
+
+const fridge_seed15 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Dark Chocolate', 1, '2026-05-26', 0]
+)
+
+const fridge_seed16 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Gammel Knas', 1, '2026-05-26', 1]
+)
+
+const fridge_seed17 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Iceberg', 1, '2026-05-26', 0]
+)
+
+const fridge_seed18 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Skyr', 2, '2026-05-26', 0]
+)
+
+const fridge_seed19 = await db.run(
+  `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
+  ['Pickles', 1, '2026-05-26', 0]
+)
+

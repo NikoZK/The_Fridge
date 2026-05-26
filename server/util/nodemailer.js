@@ -30,6 +30,6 @@ export async function sendWelcomeEmail (email, username) {
         `
   })
 
-  console.log('Message sent: %s', info.messageId)
-  console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info))
+  const previewUrl = nodemailer.getTestMessageUrl(info)
+  return previewUrl
 }

@@ -1,5 +1,4 @@
 <script>
-//If a user is logged in, they should not access login or signup. There is probably a much easier way of ensuring that...
   import { onMount } from 'svelte'
   import { navigate } from 'svelte-routing'
 

@@ -1,3 +1,6 @@
+<svelte:head>
+   <title>The Fridge | Not found!</title>
+</svelte:head>
 <div>
     <p class="text-9xl">404</p>
     <h1>Page not found</h1>

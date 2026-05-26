@@ -11,6 +11,7 @@
   import NotFound from "./components/NotFound.svelte"
   import PrivacyPolicy from "./components/PrivacyPolicy.svelte"
   import Footer from "./components/footer/Footer.svelte"
+  import Account from "./components/Account.svelte"
   import ReversePrivateRouteGuard from "./components/Route_guards/ReversePrivateRouteGuard.svelte"
   import toastr from "toastr"
   import "toastr/build/toastr.min.css"
@@ -81,7 +82,7 @@
         {/if}
 
         {#if isLoggedIn}
-        <p>Logged in as: {$userStore.email}</p>
+        <p>Logged in as: </p> <Link to="/account">{$userStore.email}</Link>
           <Link class="loggedIn" on:click={handleLogout} to="/login">Logout</Link>
         {/if}
       </div>
@@ -115,6 +116,10 @@
 
     <Route path="/fridge">
       <PrivateRouteGuard><Fridge/></PrivateRouteGuard>
+    </Route>
+
+    <Route path="/account">
+      <PrivateRouteGuard><Account/></PrivateRouteGuard>
     </Route>
 
     <Route path="/about"><About/></Route>

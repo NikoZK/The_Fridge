@@ -80,7 +80,6 @@ const dinnerPosts = []
 io.engine.use(sessionMiddleware)
 
 io.on("connection", (socket) => {
-    console.log("A new socket connected with id", socket.id)
     socket.emit('post:all', dinnerPosts)
 
     socket.on("post:create", (data) => {
@@ -92,10 +91,6 @@ io.on("connection", (socket) => {
         }
 
         io.emit("post:all", dinnerPosts)
-    })
-
-    socket.on("disconnect", () => {
-    console.log("bye bye socket id:", socket.id)
     })
 })
 

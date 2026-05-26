@@ -1,3 +1,8 @@
+<svelte:head>
+   <title>The Fridge | About</title>
+</svelte:head>
+
+
 <main id="center" style="text-align: left">
   <h1>About</h1>
   <h3>

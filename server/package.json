@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm --prefix ../client run build && npx nodemon app.js"
+    "start": "npm --prefix ../client run build && node app.js"
   },
   "keywords": [],
   "author": "",

@@ -1,3 +1,7 @@
+<svelte:head>
+   <title>The Fridge | Privacy Policy</title>
+</svelte:head>
+
 <main id="center">
   <div style="text-align: left">
     <h1>Privacy Policy</h1>
@@ -9,8 +13,7 @@
     <ul>
       <li>• Email address</li>
       <li>• Username</li>
-      <li>• Password</li>
-      <li>• The password is stored securely as a hashed value</li>
+      <li>• Password (The password is stored securely as a hashed value)</li>
     </ul>
     <br />
 
@@ -39,6 +42,16 @@
     </h3>
     <br />
 
+    <h2>Account deletion</h2>
+    <h3>
+      You have the right and ability to delete your account at any point, head over to <a
+        style="color: #0000FF"
+        href="/account">account </a
+      >
+      to delete your account. All data linked to your account will be removed from our website.
+    </h3>
+    <br />
+
     <h2>Third-party services</h2>
     <h3>
       A test email service is used to send registration emails during development. No unnecessary personal data is sent
@@ -51,8 +64,7 @@
 
     <ul>
       <li>• Know what data is stored about you</li>
-      <li>• Request correction of incorrect information</li>
-      <li>• Request deletion of your account and data</li>
+      <li>• Deletion of your account and data</li>
       <li>• Withdraw consent where applicable</li>
     </ul>
     <br />

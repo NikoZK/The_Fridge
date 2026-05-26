@@ -25,6 +25,11 @@
         postText = ''
     }
 </script>
+<svelte:head>
+   <title>The Fridge | Dinner</title>
+</svelte:head>
+
+<main id="center">
 
 <div class="chat-page ">
 
@@ -36,7 +41,8 @@
 
 <div class="chat-input">
     <input size="50" style="height: 50px" bind:value={postText} placeholder="What do you want to eat?" />
-    <button class="btn" class:btn-unavailable={postText === ""} disabled={postText === ""} on:click={sendPost}>Post</button>
+    <button class="btn" class:btn-unavailable={!postText} disabled={!postText} on:click={sendPost}>Post</button>
+</div>
 </div>
 
-</div>
+</main>

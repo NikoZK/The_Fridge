@@ -136,7 +136,6 @@ input {
 .page-content {
   flex: 1;
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
@@ -185,6 +184,16 @@ input {
   color: #0000ff;
 }
 
+input[type=checkbox] {
+    width: 30px;
+    height: 30px;
+}
+
+#input-default[type=checkbox] {
+    width: 15px;
+    height: 15px;
+}
+
 .list-right {
   display: flex;
   align-items: center;
@@ -224,8 +233,8 @@ input {
 
 .my-post {
   align-self: flex-end;
-  background: #dbeafe;
-  color: #111827;
+  background: #0f62ce;
+  color: #000000;
   padding: 0.5rem 0.75rem;
   border-radius: 12px;
   max-width: 60%;

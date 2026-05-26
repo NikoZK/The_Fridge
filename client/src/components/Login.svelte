@@ -21,6 +21,9 @@
     }
   }
 </script>
+<svelte:head>
+   <title>The Fridge | Login</title>
+</svelte:head>
 
 <main id="center">
   <h1>Login</h1>
