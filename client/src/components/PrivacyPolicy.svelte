@@ -1,5 +1,5 @@
 <svelte:head>
-   <title>The Fridge | Privacy Policy</title>
+  <title>The Fridge | Privacy Policy</title>
 </svelte:head>
 
 <main id="center">
@@ -46,8 +46,9 @@
     <h3>
       You have the right and ability to delete your account at any point, head over to <a
         style="color: #0000FF"
-        href="/account">account </a
-      >
+        href="/account"
+        >account
+      </a>
       to delete your account. All data linked to your account will be removed from our website.
     </h3>
     <br />

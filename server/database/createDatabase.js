@@ -138,4 +138,3 @@ const fridge_seed19 = await db.run(
   `INSERT INTO fridge_items (name, quantity, last_restocked, in_need) VALUES (?, ?, ?, ?)`,
   ['Pickles', 1, '2026-05-26', 0]
 )
-

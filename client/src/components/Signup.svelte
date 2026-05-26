@@ -65,7 +65,13 @@
 
     <p>
       <br />
-      <input type="password" name="confirmPassword" placeholder="Confirm Password" bind:value={confirmPassword} required />
+      <input
+        type="password"
+        name="confirmPassword"
+        placeholder="Confirm Password"
+        bind:value={confirmPassword}
+        required
+      />
     </p>
 
     <p>

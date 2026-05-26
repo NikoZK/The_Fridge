@@ -1,48 +1,48 @@
 <script>
-    import { onDestroy, onMount } from "svelte"
-    import io from "socket.io-client"
-    import { userStore } from "./stores/userStore.js"
+  import { onDestroy, onMount } from 'svelte'
+  import io from 'socket.io-client'
+  import { userStore } from './stores/userStore.js'
 
-    let postText = ''
-    let socket
-    let currentUsername = ''
-    let dinnerStore = []
+  let postText = ''
+  let socket
+  let currentUsername = ''
+  let dinnerStore = []
 
-    $: currentUsername = $userStore.username
+  $: currentUsername = $userStore.username
 
-    onMount(() => {
-        socket = io("http://localhost:8080", { withCredentials: true })
-        
-        socket.on('post:all', (posts) => {
-            dinnerStore = posts
-        })
+  onMount(() => {
+    socket = io('http://localhost:8080', { withCredentials: true })
+
+    socket.on('post:all', (posts) => {
+      dinnerStore = posts
     })
+  })
 
-    onDestroy(() => socket.disconnect())
+  onDestroy(() => socket.disconnect())
 
-    function sendPost() {
-        socket.emit("post:create", { message: postText })
-        postText = ''
-    }
+  function sendPost() {
+    socket.emit('post:create', { message: postText })
+    postText = ''
+  }
 </script>
+
 <svelte:head>
-   <title>The Fridge | Dinner</title>
+  <title>The Fridge | Dinner</title>
 </svelte:head>
 
 <main id="center">
+  <div class="chat-page">
+    <div class="chat-room border-2">
+      {#each dinnerStore as post}
+        <p class={post.username === currentUsername ? 'my-post' : 'other-post'}>
+          {post.message} <br /> -{post.username}
+        </p>
+      {/each}
+    </div>
 
-<div class="chat-page ">
-
-<div class="chat-room border-2 ">
-    {#each dinnerStore as post}
-    <p class={post.username === currentUsername ? 'my-post' : 'other-post'}>{post.message} <br> -{post.username}</p>
-    {/each}
-</div>
-
-<div class="chat-input">
-    <input size="50" style="height: 50px" bind:value={postText} placeholder="What do you want to eat?" />
-    <button class="btn" class:btn-unavailable={!postText} disabled={!postText} on:click={sendPost}>Post</button>
-</div>
-</div>
-
+    <div class="chat-input">
+      <input size="50" style="height: 50px" bind:value={postText} placeholder="What do you want to eat?" />
+      <button class="btn" class:btn-unavailable={!postText} disabled={!postText} on:click={sendPost}>Post</button>
+    </div>
+  </div>
 </main>

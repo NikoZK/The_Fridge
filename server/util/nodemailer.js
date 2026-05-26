@@ -11,18 +11,16 @@ const transporter = nodemailer.createTransport({
   }
 })
 
-export async function sendWelcomeEmail (email, username) {
+export async function sendWelcomeEmail(email, username) {
   const info = await transporter.sendMail({
     from: 'noreply@the-fridge.com',
     to: `${email}`,
     subject: 'Welcome to The Fridge!',
-    text:
-        `
+    text: `
         Welcome ${username}!
         Hello and welcome to THE FRIDGE
         `,
-    html:
-        `
+    html: `
         <h1>Welcome ${username}!</h1>
 
         <h2>Hello and welcome to THE FRIDGE</h2>

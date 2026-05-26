@@ -21,8 +21,9 @@
     }
   }
 </script>
+
 <svelte:head>
-   <title>The Fridge | Login</title>
+  <title>The Fridge | Login</title>
 </svelte:head>
 
 <main id="center">
@@ -30,13 +31,13 @@
 
   <form on:submit|preventDefault={handleLogin}>
     <p>
-        <br />
-        <input type="text" name="username" placeholder="Username" bind:value={username} />
+      <br />
+      <input type="text" name="username" placeholder="Username" bind:value={username} />
     </p>
 
     <p>
-        <br />
-        <input type="password" name="password" placeholder="Password" bind:value={password} />
+      <br />
+      <input type="password" name="password" placeholder="Password" bind:value={password} />
     </p>
 
     <p>

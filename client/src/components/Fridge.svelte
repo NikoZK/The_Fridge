@@ -49,8 +49,9 @@
     }
   }
 </script>
+
 <svelte:head>
-   <title>The Fridge | Dashboard</title>
+  <title>The Fridge | Dashboard</title>
 </svelte:head>
 
 <main class="w-3/6">

@@ -40,7 +40,8 @@ body {
   margin: 0;
   min-height: 100vh;
   flex: 1;
-  background: linear-gradient(rgba(5, 18, 92, 0.856), rgba(5, 24, 65, 0.733), rgba(7, 25, 65, 0.76)), url('/fridge_open.png');
+  background:
+    linear-gradient(rgba(5, 18, 92, 0.856), rgba(5, 24, 65, 0.733), rgba(7, 25, 65, 0.76)), url('/fridge_open.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -49,7 +50,8 @@ body {
 .logged-out-bg {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(rgba(5, 18, 92, 0.856), rgba(5, 24, 65, 0.733), rgba(7, 25, 65, 0.76)), url('/fridge.png');
+  background:
+    linear-gradient(rgba(5, 18, 92, 0.856), rgba(5, 24, 65, 0.733), rgba(7, 25, 65, 0.76)), url('/fridge.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -96,7 +98,6 @@ input {
   color: var(--accent);
   background: rgba(7, 25, 65, 0.76);
   border: 2px solid transparent;
-
 }
 
 .bg_box {
@@ -184,14 +185,14 @@ input {
   color: #0000ff;
 }
 
-input[type=checkbox] {
-    width: 30px;
-    height: 30px;
+input[type='checkbox'] {
+  width: 30px;
+  height: 30px;
 }
 
-#input-default[type=checkbox] {
-    width: 15px;
-    height: 15px;
+#input-default[type='checkbox'] {
+  width: 15px;
+  height: 15px;
 }
 
 .list-right {
