@@ -59,6 +59,7 @@ node database/createDatabase.js --delete
 Start the server:
 
 ```bash
+cd server
 npm start
 ```
 
@@ -81,6 +82,10 @@ npx nodemon app.js
 ```
 
 The backend runs on port `8080`.
+
+## Hosting
+
+It will also be hosted on `kondratowi.cz` when we get closer to the exam.
 
 ## Notes
 
